@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Textarea</title>
+</head>
+<body>
+
+	<div id="app">
+		<form>
+			<textarea placeholder="Please input any context" v-model="message"></textarea>
+		</form>
+		<p style="white-space: pre-line;">Input content: {{ message }}</p>
+	</div>
+	
+</body>
+
+<script src="https://unpkg.com/vue"></script>
+<script>
+	var vm = new Vue({
+		el: '#app',
+		data: {
+			message: ''
+		}
+	})
+</script>
+</html>

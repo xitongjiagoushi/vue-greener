@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Select</title>
+</head>
+<body>
+
+	<div id="app">
+		<!-- Single select -->
+		<form action="">
+			<select v-model="singleValue">
+				<option disabled value="">Plz choose</option>
+				<option value="A">A</option>
+				<option value="B">B</option>
+				<option value="C">C</option>
+			</select>
+		</form>
+		You choose(single): {{ singleValue }}
+
+		<hr>
+
+		<!-- Multiple select -->
+		<form action="">
+			<select v-model="multiValue" multiple>
+				<option value="A">A</option>
+				<option value="B">B</option>
+				<option value="C">C</option>
+			</select>
+		</form>
+		You choose(multiple): {{ multiValue }}
+
+		<hr>
+
+		<form action="">
+			<select v-model="dynamic">
+				<option v-for="option in options" :value="option.value">{{ option.text }}</option>
+			</select>
+		</form>
+		You choose(dynamic): {{ dynamic }}
+	</div>
+	
+</body>
+
+<script src="https://unpkg.com/vue"></script>
+<script>
+	var vm = new Vue({
+		el: '#app',
+		data: {
+			singleValue: '',
+			multiValue: [],
+			dynamic: 'A',
+			options: [
+				{
+					value: 'A',
+					text: 'One',
+				},
+				{
+					value: 'B',
+					text: 'Two',
+				},
+				{
+					value: 'C',
+					text: 'Three',
+				}
+			],
+		},
+	})
+</script>
+</html>

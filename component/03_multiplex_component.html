@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Multiplex component</title>
+</head>
+<body>
+
+	<div id="app">
+		<!-- three button counter, multiplex component -->
+		<button-counter></button-counter>
+		<button-counter></button-counter>
+		<button-counter></button-counter>
+	</div>
+	
+</body>
+
+<script src="https://unpkg.com/vue"></script>
+<script>
+	Vue.component('button-counter', {
+		// Caution! data in Vue.componet MUST return by a function(for 'singleton').
+		data: function () {
+			return {
+				counter: 0
+			}
+		},
+		template: '<button @click="counter++">Click me {{ counter }} times.</button>',
+	})
+
+	var vm = new Vue({
+		el: '#app',
+	})
+</script>
+</html>

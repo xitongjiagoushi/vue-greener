@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Input</title>
+</head>
+<body>
+
+	<div id="app">
+		<form>
+			<input placeholder="Please input any content" v-model="message">
+		</form>
+		<p>Input content: {{ message }}</p>
+
+		<hr>
+
+		<form>
+			<!-- 
+				v-model.lazy
+				v-model.number
+				v-model.trim
+			 -->
+			<input placeholder="Please input a number" v-model.number="number" type="number">
+		</form>
+		<p>Input number: {{ number }}</p>
+	</div>
+	
+</body>
+
+<script src="https://unpkg.com/vue"></script>
+<script>
+	var vm = new Vue({
+		el: '#app',
+		data: {
+			message: '',
+			number: ''
+		}
+	})
+</script>
+</html>

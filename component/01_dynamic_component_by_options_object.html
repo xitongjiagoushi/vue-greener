@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--
+		ref: {
+			api-doc: "https://cn.vuejs.org/v2/guide/components.html",
+			jsfiddle: "https://jsfiddle.net/chrisvfritz/b2qj69o1/",
+		}
+	-->
+	<meta charset="UTF-8">
+	<title>Dynamic component</title>
+	<style>
+		.tab-button {
+			padding: 6px 10px;
+			border-top-left-radius: 3px;
+			border-top-right-radius: 3px;
+			border: 1px solid #ccc;
+			cursor: pointer;
+			background: #f0f0f0;
+			margin-bottom: -1px;
+			margin-right: -1px;
+		}
+		.tab-button:hover {
+			background: #e0e0e0;
+		}
+		.tab-button.active {
+			background: #e0e0e0;
+		}
+		.tab {
+			border: 1px solid #ccc;
+			padding: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<button v-for="tab in tabs" :key="tab.name"
+			:class="['tab-button', { active : currentTab.name == tab.name }]"
+			@click="currentTab = tab">
+			{{ tab.name }}
+		</button>
+		<component :is="currentTab.content" class="tab"></component>
+	</div>
+</body>
+
+<script src="https://unpkg.com/vue"></script>
+<script>
+	var tabs = [
+		{
+			name: 'Home',
+			content: {
+				template: '<div>Home content</div>'
+			},
+		},
+		{
+			name: 'Posts',
+			content: {
+				template: '<div>Posts content</div>'
+			},
+		},
+		{
+			name: 'Archive',
+			content: {
+				template: '<div>Archive content</div>'
+			},
+		},
+	]
+	var vm = new Vue({
+		el: '#app',
+		data: {
+			tabs: tabs,
+			currentTab: tabs[0],
+		},
+	})
+</script>
+</html>
